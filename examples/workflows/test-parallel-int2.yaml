@@ -1,0 +1,11 @@
+stages:
+  - test
+
+image: ubuntu:20.04
+
+testing:
+  stage: test
+  script:
+    - env
+    - sleep 60
+  parallel: 3

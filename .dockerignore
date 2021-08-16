@@ -1,0 +1,7 @@
+dist
+hack
+node_modules
+pkg/box/blob.go
+release
+ui/dist
+ui/node_modules

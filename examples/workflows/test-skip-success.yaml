@@ -1,0 +1,16 @@
+stages:
+  - first
+  - second
+
+this-job-succeeds:
+  stage: first
+  image: ubuntu:20.04
+  script:
+    - hostname
+
+this-job-will-never-run:
+  stage: second
+  image: ubuntu:20.04
+  script:
+    - echo "this will never run"
+  when: on_failure

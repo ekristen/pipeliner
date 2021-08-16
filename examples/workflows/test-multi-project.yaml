@@ -1,0 +1,44 @@
+image: alpine
+
+build:
+  stage: build
+  script: 
+    - echo "building..."
+    - echo "artifact from project:$CI_PROJECT_PATH, branch:$CI_COMMIT_BRANCH, job_url:$CI_JOB_URL" > artifact.txt
+  artifacts:
+    paths: [artifact.txt]
+  rules:
+    - if: "$CI_COMMIT_BRANCH == 'master'"
+
+unit_tests:
+  stage: test
+  script: echo "running unit tests..."
+
+integration_tests:
+  stage: test
+  script: echo "running integration tests..."
+
+system_tests:
+  stage: test
+  trigger:
+    project: gitlab-examples/system-tests
+    branch: master
+    strategy: depend
+  variables:
+    ARTIFACTS_JOB: build
+    ARTIFACTS_FILE: artifact.txt
+    UPSTREAM_COMMIT_BRANCH: $CI_COMMIT_BRANCH
+
+deploy:
+  stage: deploy
+  script: echo "deploying app..."
+
+metrics:
+  stage: deploy
+  trigger:
+    project: gitlab-examples/metrics
+    branch: master
+  variables:
+    PROJECT_URL: $CI_PROJECT_URL
+    PROJECT_NAME: $CI_PROJECT_NAME
+    COMMIT_SHA: $CI_COMMIT_SHA

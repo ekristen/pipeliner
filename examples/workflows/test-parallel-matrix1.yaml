@@ -1,0 +1,16 @@
+stages:
+  - test
+
+image: ubuntu:20.04
+
+testing:
+  stage: test
+  script:
+    - env
+  parallel:
+    matrix:
+      - PROVIDER: aws
+        STACK:
+          - monitoring
+          - app1
+          - app2

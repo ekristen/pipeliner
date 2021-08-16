@@ -1,0 +1,8 @@
+date:
+  image: ubuntu:20.04
+  parallel: 10
+  artifacts:
+    paths:
+      - job-hostname
+  script:
+    - hostname > job-hostname

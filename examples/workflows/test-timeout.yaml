@@ -1,0 +1,7 @@
+test:
+  stage: test
+  timeout: 60
+  script:
+    - env
+    - sleep 90
+    - env

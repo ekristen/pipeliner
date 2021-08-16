@@ -1,0 +1,53 @@
+version: "2"
+
+services:
+  mysql:
+    image: mysql:5
+    environment:
+      MYSQL_ROOT_PASSWORD: pipeliner
+      MYSQL_DATABASE: pipeliner
+      MYSQL_USER: pipeliner
+      MYSQL_PASSWORD: pipeliner
+    ports:
+      - 4455:3306
+
+  # docker run -d --name gitlab-runner --restart always \
+  #   -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+  #   -v /var/run/docker.sock:/var/run/docker.sock \
+  #   gitlab/gitlab-runner:latest
+
+  runner:
+    image: gitlab/gitlab-runner:latest
+    command:
+      - run
+      - -c
+      - /config/config1.yaml
+    restart: always
+    privileged: true
+    volumes:
+      - ./hack:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  runner2:
+    image: gitlab/gitlab-runner:latest
+    command:
+      - run
+      - -c
+      - /config/config2.yaml
+    restart: always
+    privileged: true
+    volumes:
+      - ./hack:/config
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  runner3:
+    image: gitlab/gitlab-runner:latest
+    command:
+      - run
+      - -c
+      - /config/config3.yaml
+    restart: always
+    privileged: true
+    volumes:
+      - ./hack:/config
+      - /var/run/docker.sock:/var/run/docker.sock

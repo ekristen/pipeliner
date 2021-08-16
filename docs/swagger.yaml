@@ -1,0 +1,348 @@
+basePath: /v1
+consumes:
+- application/json
+- text/plain
+definitions:
+  BuildVariable:
+    description: BuildVariable defines variables that are merged into specific builds
+      and dependent builds
+    properties:
+      build_id:
+        format: int64
+        type: integer
+        x-go-name: BuildID
+      created_at:
+        description: 'TODO: switch to pointers?'
+        format: date-time
+        type: string
+        x-go-name: CreatedAt
+      file:
+        type: boolean
+        x-go-name: File
+      internal:
+        type: boolean
+        x-go-name: Internal
+      masked:
+        type: boolean
+        x-go-name: Masked
+      name:
+        type: string
+        x-go-name: Name
+      public:
+        type: boolean
+        x-go-name: Public
+      updated_at:
+        format: date-time
+        type: string
+        x-go-name: UpdatedAt
+      value:
+        type: string
+        x-go-name: Value
+    type: object
+    x-go-package: _/home/ekristen/projects/pipeliner/pkg/models
+  GlobalVariable:
+    description: GlobalVariable define variables that are merged into all jobs
+    properties:
+      created_at:
+        description: 'TODO: switch to pointers?'
+        format: date-time
+        type: string
+        x-go-name: CreatedAt
+      file:
+        type: boolean
+        x-go-name: File
+      internal:
+        type: boolean
+        x-go-name: Internal
+      masked:
+        type: boolean
+        x-go-name: Masked
+      name:
+        type: string
+        x-go-name: Name
+      public:
+        type: boolean
+        x-go-name: Public
+      updated_at:
+        format: date-time
+        type: string
+        x-go-name: UpdatedAt
+      value:
+        type: string
+        x-go-name: Value
+    type: object
+    x-go-package: _/home/ekristen/projects/pipeliner/pkg/models
+  PipelineVariable:
+    description: PipelineVariable define variables that are merged into all pipeline
+      builds
+    properties:
+      created_at:
+        description: 'TODO: switch to pointers?'
+        format: date-time
+        type: string
+        x-go-name: CreatedAt
+      file:
+        type: boolean
+        x-go-name: File
+      internal:
+        type: boolean
+        x-go-name: Internal
+      masked:
+        type: boolean
+        x-go-name: Masked
+      name:
+        type: string
+        x-go-name: Name
+      pipeline_id:
+        format: int64
+        type: integer
+        x-go-name: PipelineID
+      public:
+        type: boolean
+        x-go-name: Public
+      updated_at:
+        format: date-time
+        type: string
+        x-go-name: UpdatedAt
+      value:
+        type: string
+        x-go-name: Value
+    type: object
+    x-go-package: _/home/ekristen/projects/pipeliner/pkg/models
+  ScheduleVariable:
+    description: ScheduleVariable defines variables that are merged into pipelines
+      when run by a schedule
+    properties:
+      build_id:
+        format: int64
+        type: integer
+        x-go-name: BuildID
+      created_at:
+        description: 'TODO: switch to pointers?'
+        format: date-time
+        type: string
+        x-go-name: CreatedAt
+      file:
+        type: boolean
+        x-go-name: File
+      internal:
+        type: boolean
+        x-go-name: Internal
+      masked:
+        type: boolean
+        x-go-name: Masked
+      name:
+        type: string
+        x-go-name: Name
+      public:
+        type: boolean
+        x-go-name: Public
+      updated_at:
+        format: date-time
+        type: string
+        x-go-name: UpdatedAt
+      value:
+        type: string
+        x-go-name: Value
+    type: object
+    x-go-package: _/home/ekristen/projects/pipeliner/pkg/models
+  Variable:
+    description: Variable --
+    properties:
+      created_at:
+        description: 'TODO: switch to pointers?'
+        format: date-time
+        type: string
+        x-go-name: CreatedAt
+      file:
+        type: boolean
+        x-go-name: File
+      internal:
+        type: boolean
+        x-go-name: Internal
+      masked:
+        type: boolean
+        x-go-name: Masked
+      name:
+        type: string
+        x-go-name: Name
+      public:
+        type: boolean
+        x-go-name: Public
+      updated_at:
+        format: date-time
+        type: string
+        x-go-name: UpdatedAt
+      value:
+        type: string
+        x-go-name: Value
+    type: object
+    x-go-package: _/home/ekristen/projects/pipeliner/pkg/models
+info:
+  description: This documentation describes the Pipeliner API.
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+  title: Pipeliner API.
+  version: 1.0.0
+paths:
+  /artifacts/{id}/download:
+    get:
+      operationId: downloadArtifact
+      parameters:
+      - description: id of the build/job
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/octet-stream
+      - application/tar+gzip
+      - application/zip
+      responses:
+        "200":
+          $ref: '#/responses/Artifact'
+      summary: Download an artifact
+      tags:
+      - artifact
+  /artifacts/{id}/files:
+    get:
+      operationId: listArtifactFiles
+      parameters:
+      - description: id of the build/job
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/ArtifactFiles'
+      summary: List files in archive artifacts
+      tags:
+      - artifact
+  /builds/{id}/artifact/{type}:
+    get:
+      operationId: getBuildArtifactByType
+      parameters:
+      - description: id of the build/job
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: type of artifact to retrieve
+        in: path
+        name: type
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/Artifact'
+      summary: Retrieve build artifact by type
+      tags:
+      - build
+  /pipelines:
+    post:
+      operationId: createPipeline
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/Pipeline'
+      summary: Create a pipeline
+      tags:
+      - pipeline
+  /pipelines/{id}:
+    get:
+      operationId: getPipeline
+      parameters:
+      - description: id of the pipeline
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/Pipeline'
+      summary: Get pipeline
+      tags:
+      - pipeline
+  /pipelines/{id}/artifacts:
+    get:
+      operationId: listPipelineArtifacts
+      parameters:
+      - description: id of the pipeline
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: page number of results to return (1-based)
+        in: query
+        name: page
+        type: integer
+      - description: page size of results
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/ArtifactList'
+      summary: List the artifacts for a pipeline
+      tags:
+      - pipeline
+produces:
+- application/json
+- text/html
+schemes:
+- http
+- https
+security:
+- BasicAuth: []
+- Token: []
+- AccessToken: []
+- AuthorizationHeaderToken: []
+- SudoParam: []
+- SudoHeader: []
+- TOTPHeader: []
+securityDefinitions:
+  AccessToken:
+    in: query
+    name: access_token
+    type: apiKey
+  AuthorizationHeaderToken:
+    description: API tokens must be prepended with "token" followed by a space.
+    in: header
+    name: Authorization
+    type: apiKey
+  BasicAuth:
+    type: basic
+  SudoHeader:
+    description: Sudo API request as the user provided as the key. Admin privileges
+      are required.
+    in: header
+    name: Sudo
+    type: apiKey
+  SudoParam:
+    description: Sudo API request as the user provided as the key. Admin privileges
+      are required.
+    in: query
+    name: sudo
+    type: apiKey
+  TOTPHeader:
+    description: Must be used in combination with BasicAuth if two-factor authentication
+      is enabled.
+    in: header
+    name: X-GITEA-OTP
+    type: apiKey
+  Token:
+    in: query
+    name: token
+    type: apiKey
+swagger: "2.0"

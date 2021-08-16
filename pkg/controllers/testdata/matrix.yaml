@@ -1,0 +1,14 @@
+stages:
+  - test
+
+testing:
+    stage: test
+    script:
+        - env
+    parallel:
+        matrix:
+            - PROVIDER: aws
+              STACK:
+                - monitoring
+                - app1
+                - app2

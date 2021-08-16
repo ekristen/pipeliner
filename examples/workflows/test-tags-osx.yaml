@@ -1,0 +1,7 @@
+find-all-files:
+  script:
+    - find /usr/local
+    - sleep 10
+    - find /home
+  tags:
+    - osx

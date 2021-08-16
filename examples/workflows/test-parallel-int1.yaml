@@ -1,0 +1,10 @@
+stages:
+  - test
+
+image: ubuntu:20.04
+
+testing:
+  stage: test
+  script:
+    - env
+  parallel: 3

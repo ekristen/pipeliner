@@ -1,0 +1,15 @@
+stages:
+  - first
+  - second
+
+test-first:
+  stage: first
+  image: ubuntu:20.04
+  script:
+    - hostname
+
+test-second:
+  stage: second
+  image: ubuntu:20.04
+  script:
+    - hostname

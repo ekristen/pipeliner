@@ -1,0 +1,16 @@
+stages:
+  - test
+
+global:
+  stage: test
+  image: ubuntu:20.04
+  script:
+    - echo $GLOBAL_USERNAME
+    - echo $GLOBAL_PASSWORD
+
+workflow:
+  stage: test 
+  image: ubuntu:20.04
+  script:
+    - echo $WORKFLOW_USERNAME
+    - echo $WORKFLOW_PASSWORD

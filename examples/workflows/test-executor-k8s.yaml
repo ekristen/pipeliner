@@ -1,0 +1,13 @@
+stages:
+  - test
+
+first:
+  stage: test
+  image: ubuntu:20.04
+  variables:
+    PIPELINER_K8S_AFFINITY: "node:required:expression:carbonite.nowsecure.io/device-id:in:a6f608be1a97f559576c0f8458a47cddf8b8c0cd"
+  script:
+    - env
+    - sleep 15
+  tags:
+    - k8s

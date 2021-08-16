@@ -1,0 +1,19 @@
+image: ubuntu:20.04
+
+build:
+  stage: build
+  script:
+    - echo "BUILD_VERSION=hello" >> build.env
+    - ls -la
+    - cat build.env
+  artifacts:
+    reports:
+      dotenv: build.env
+
+deploy:
+  stage: deploy
+  script:
+    - ls -la
+    - echo $BUILD_VERSION  # => hello
+  dependencies:
+    - build

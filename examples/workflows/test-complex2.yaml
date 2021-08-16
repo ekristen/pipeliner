@@ -1,0 +1,37 @@
+# 1. Failed
+# 2. Success
+# 3. Success
+# 4. Skipped
+
+stages:
+  - first
+  - second
+  - third
+  - fourth
+
+this-job-will-fail:
+  stage: first
+  image: ubuntu:20.04
+  script:
+    - hihihi
+
+this-job-will-never-run:
+  stage: second
+  image: ubuntu:20.04
+  script:
+    - echo "this will never run"
+  when: always
+
+this-job-will-run-on-failure:
+  stage: third
+  image: ubuntu:20.04
+  when: on_failure
+  script:
+    - echo "failure job"
+
+this-job-will-run-on-manual:
+  stage: fourth
+  image: ubuntu:20.04
+  when: manual
+  script:
+    - echo "manual run"

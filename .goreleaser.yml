@@ -1,0 +1,56 @@
+dist: release
+env:
+  - PACKAGE_NAME=github.com/ekristen/pipeliner
+  - SUMMARY={{ .Env.SUMMARY }}
+  - VERSION={{ .Env.VERSION }}
+  - BRANCH={{ .Env.BRANCH }}
+before:
+  hooks:
+    - bash .ci/build-ui.sh
+    - go mod tidy
+    - go generate ./...
+release:
+  github:
+    owner: ekristen
+    name: pipeliner
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    ignore:
+      - goarch: 386
+    ldflags:
+      - -X {{.Env.PACKAGE_NAME}}/pkg/common.SUMMARY={{.Env.SUMMARY}} -X {{.Env.PACKAGE_NAME}}/pkg/common.BRANCH={{.Env.BRANCH}} -X {{.Env.PACKAGE_NAME}}/pkg/common.VERSION={{.Env.VERSION}}
+archives:
+  - replacements:
+      386: i386
+      amd64: x86_64
+dockers:
+  - use: buildx
+    goos: linux
+    goarch: amd64
+    dockerfile: Dockerfile.gorelease
+    image_templates:
+      - ghcr.io/ekristen/pipeliner:latest
+      - ghcr.io/ekristen/pipeliner:{{ .Tag }}
+    build_flag_templates:
+      - "--pull"
+      - "--label=org.opencontainers.image.created={{.Date}}"
+      - "--label=org.opencontainers.image.title={{.ProjectName}}"
+      - "--label=org.opencontainers.image.revision={{.FullCommit}}"
+      - "--label=org.opencontainers.image.version={{.Version}}"
+      - "--label=org.opencontainers.image.source=https://github.com/ekristen/pipeliner"
+      - "--platform=linux/amd64"
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"

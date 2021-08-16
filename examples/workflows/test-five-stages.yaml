@@ -1,0 +1,43 @@
+stages:
+  - one
+  - two
+  - three
+  - four
+  - five
+
+first:
+  stage: one
+  image: ubuntu:20.04
+  script:
+    - hostname
+  tags:
+    - linux
+
+second:
+  stage: two
+  image: ubuntu:20.04
+  script:
+    - env
+
+third:
+  stage: three
+  image: ubuntu:20.04
+  script:
+    - failed
+
+fourth:
+  stage: four
+  image: ubuntu:20.04
+  artifacts:
+    paths:
+      - hn
+  script:
+    - hostname > hn
+
+fifth:
+  stage: five
+  image: ubuntu:20.04
+  dependencies:
+    - fourth
+  script:
+    - cat hn

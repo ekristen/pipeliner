@@ -1,0 +1,10 @@
+*.sqlite
+_extra
+pkg/box/blob.go
+main
+release
+vendor
+pipeliner
+.envrc
+dist/
+archive
