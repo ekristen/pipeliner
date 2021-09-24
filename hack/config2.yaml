@@ -6,7 +6,7 @@ session_timeout = 1800
 
 [[runners]]
 name = "Prometheus"
-url = "http://192.168.x.103:4444"
+url = "http://192.168.11.103:4444"
 token = "dev2"
 executor = "docker"
 [runners.custom_build_dir]
