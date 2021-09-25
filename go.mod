@@ -7,7 +7,7 @@ require (
 	github.com/Nvveen/Gotty v0.0.0-20120604004816-cd527374f1e5 // indirect
 	github.com/buildkite/terminal-to-html/v3 v3.4.1-0.20200917034757-9577c9f1146b
 	github.com/bwmarrin/snowflake v0.3.0
-	github.com/chartmuseum/storage v0.9.1
+	github.com/chartmuseum/storage v0.11.0
 	github.com/containerd/continuity v0.0.0-20200928162600-f2cc35102c2a // indirect
 	github.com/docker/cli v0.0.0-20181219132003-336b2a5cac7f // indirect
 	github.com/docker/docker v1.4.2-0.20190822180741-9552f2b2fdde // indirect
@@ -38,7 +38,6 @@ require (
 	gitlab.com/ayufan/golang-cli-helpers v0.0.0-20171103152739-a7cf72d604cd // indirect
 	gitlab.com/gitlab-org/gitlab-runner v12.5.0+incompatible
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
-	google.golang.org/protobuf v1.25.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/yaml.v1 v1.0.0-20140924161607-9f9df34309c0
 	gopkg.in/yaml.v2 v2.3.0
