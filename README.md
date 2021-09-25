@@ -1,10 +1,10 @@
 # Pipeliner
 
-**Important:** This is not quite alpha but not quite beta either. Decisions could be made that cause breaking changes still.
+**Status: ALPHA** - Everything works, but decisions could be made that cause breaking changes still. Definitely still rough edges.
 
 The initial goals of this project is to provide a way to run arbitrary pipelines of jobs in a fast and sane manor while leveraging newer languages and processes then years of the past.
 
-**Important:** SCM integration has been **PURPOSEFULLY** left out until this point. It's possible this project will be expanded to handle SCMs.
+**Important:** SCM integration has been **PURPOSEFULLY** left out at this point. It's possible this project will be expanded to handle SCMs.
 
 If you are looking for an open source CI/CD system, please check out [Alloy CI](https://github.com/AlloyCI/alloy_ci), Alloy CI is based on GitLab Runner as well, but is designed to integration with your SCM.
 
@@ -13,6 +13,18 @@ If you are looking for an open source CI/CD system, please check out [Alloy CI](
 Thank you to GitLab for building a wonderful CI/CD system and for open sourcing their GitLab Runner.
 
 Thank you to Alloy CI from which inspiration and some better understanding of the GitLab backend works.
+
+## Getting Started
+
+The simplest way to get started is to download the binary for your OS and run the following:
+
+```bash
+./pipeliner api-server
+```
+
+Then open the UI at http://localhost:4444, navigate to the runners tab and follow the in UI instructions for adding a runner to the API.
+
+**Note:** there currently isn't any authentication to for registering runners, but once the runner is registered it's token it uses is unique. Registration auth is in the works.
 
 ## Design
 
@@ -27,7 +39,8 @@ Variables can be defined globally or at the pipeline level.
 ## Outstanding Tasks
 
 - [ ] High Availability for the API Server
-- [ ] Authentication
+- [ ] UI Authentication
+- [ ] Runner Registration Auth
 - [ ] Support include (Gitlab CI, or YAML include of some sort)
 - [ ] Support trigger (GitLab CI)
 - [ ] Support rules (GitLab CI terminology for when jobs execute)

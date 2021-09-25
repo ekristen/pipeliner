@@ -1,5 +1,12 @@
 <template>
-  <v-navigation-drawer v-bind="$attrs" app clipped permanent :mini-variant="mini" class="pt-2">
+  <v-navigation-drawer
+    v-bind="$attrs"
+    app
+    clipped
+    permanent
+    :mini-variant="mini"
+    class="pt-2"
+  >
     <v-list dense nav>
       <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
         <v-list-item-icon>
@@ -15,7 +22,7 @@
     <template v-slot:append>
       <v-list-item @click="alwaysMini = !alwaysMini" link>
         <v-list-item-icon>
-          <v-icon>{{collapseIcon}}</v-icon>
+          <v-icon>{{ collapseIcon }}</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
@@ -48,7 +55,7 @@ export default {
         { title: "Workflows", icon: "mdi-puzzle-outline", to: "/workflows" },
         { title: "Runners", icon: "mdi-network-outline", to: "/runners" },
         { title: "Variables", icon: "mdi-variable", to: "/variables" },
-        { title: "Register Tokens", icon: "mdi-signal", to: "/tokens" },
+        //{ title: "Register Tokens", icon: "mdi-signal", to: "/tokens" },
       ],
       right: null,
     };
