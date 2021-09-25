@@ -79,6 +79,8 @@ If you are looking for an open source CI/CD system, please check out [Alloy CI](
 
 ### Dynamic Kubernetes Scheduling
 
+**Important:** The pipeliner runner is not yet published for this feature. **Coming soon**
+
 When running a job there are many occassions where a job (or workload) would need to be run on a specific node in a Kubernetes cluster, maybe because of unique hardware.
 
 Using the GitLab Runner natively this is not possible without running a different executor PER node, while the GitLab Runner makes this possibly by configuring multiple executors per runner. If nodes change frequently the reconfiguring of the GitLab Runner gets difficult, enter the **Dynamic Kubernetes Scheduling** feature.
