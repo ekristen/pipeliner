@@ -14,7 +14,7 @@
     "highlightjs-line-numbers.js": "2.8.0",
     "json-bigint": "1.0.0",
     "node-cache": "5.1.2",
-    "simple-syntax-highlighter": "1.4.4",
+    "simple-syntax-highlighter": "1.4.9",
     "vue": "2.6.12",
     "vue-axios": "2.1.5",
     "vue-codemirror": "4.0.6",
