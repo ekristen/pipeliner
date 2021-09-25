@@ -5,7 +5,7 @@ go 1.16
 require (
 	github.com/Microsoft/go-winio v0.4.14 // indirect
 	github.com/Nvveen/Gotty v0.0.0-20120604004816-cd527374f1e5 // indirect
-	github.com/buildkite/terminal-to-html/v3 v3.4.1-0.20200917034757-9577c9f1146b
+	github.com/buildkite/terminal-to-html/v3 v3.6.1
 	github.com/bwmarrin/snowflake v0.3.0
 	github.com/chartmuseum/storage v0.9.1
 	github.com/containerd/continuity v0.0.0-20200928162600-f2cc35102c2a // indirect
