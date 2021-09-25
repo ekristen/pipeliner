@@ -31,13 +31,12 @@ require (
 	github.com/opencontainers/image-spec v1.0.1 // indirect
 	github.com/opencontainers/runc v0.1.1 // indirect
 	github.com/prometheus/client_golang v1.9.0 // indirect
-	github.com/rancher/wrangler v0.7.2
+	github.com/rancher/wrangler v0.8.6
 	github.com/sirupsen/logrus v1.7.0
 	github.com/tevino/abool v1.2.0 // indirect
 	github.com/urfave/cli/v2 v2.2.0
 	gitlab.com/ayufan/golang-cli-helpers v0.0.0-20171103152739-a7cf72d604cd // indirect
 	gitlab.com/gitlab-org/gitlab-runner v12.5.0+incompatible
-	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a // indirect
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
 	google.golang.org/protobuf v1.25.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
