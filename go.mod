@@ -34,7 +34,7 @@ require (
 	github.com/rancher/wrangler v0.8.6
 	github.com/sirupsen/logrus v1.7.0
 	github.com/tevino/abool v1.2.0 // indirect
-	github.com/urfave/cli/v2 v2.2.0
+	github.com/urfave/cli/v2 v2.3.0
 	gitlab.com/ayufan/golang-cli-helpers v0.0.0-20171103152739-a7cf72d604cd // indirect
 	gitlab.com/gitlab-org/gitlab-runner v12.5.0+incompatible
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
