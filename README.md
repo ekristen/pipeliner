@@ -2,17 +2,7 @@
 
 **Status: ALPHA** - Everything works, but decisions could be made that cause breaking changes still. Definitely still rough edges.
 
-The initial goals of this project is to provide a way to run arbitrary pipelines of jobs in a fast and sane manor while leveraging newer languages and processes then years of the past.
-
-**Important:** SCM integration has been **PURPOSEFULLY** left out at this point. It's possible this project will be expanded to handle SCMs.
-
-If you are looking for an open source CI/CD system, please check out [Alloy CI](https://github.com/AlloyCI/alloy_ci), Alloy CI is based on GitLab Runner as well, but is designed to integration with your SCM.
-
-## Acknowledgements, Credits and Thanks
-
-Thank you to GitLab for building a wonderful CI/CD system and for open sourcing their GitLab Runner.
-
-Thank you to Alloy CI from which inspiration and some better understanding of the GitLab backend works.
+The initial goals of this project is to provide a way to run arbitrary pipelines of jobs in a fast and sane manor. This project uses golang and Vue.JS to create a single compiled binary with the UI embedded. By default is leverages SQLite and it can be configured to connect to any SQL server that [GORM](https://gorm.io/index.html) supports.
 
 ## Getting Started
 
@@ -26,6 +16,18 @@ Then open the UI at http://localhost:4444, navigate to the runners tab and follo
 
 **Note:** there currently isn't any authentication to for registering runners, but once the runner is registered it's token it uses is unique. Registration auth is in the works.
 
+There are bunch of workflows in `examples/workerflows`, you can manually load them or use the `seed-workflows` by the following command:
+
+```bash
+./pipeliner seed-workflows --directory examples/workflows
+```
+
+## Acknowledgements, Credits and Thanks
+
+Thank you to GitLab for building a wonderful CI/CD system and for open sourcing their GitLab Runner.
+
+Thank you to Alloy CI from which inspiration and some better understanding of the GitLab backend works.
+
 ## Design
 
 This project utilizes the [GitLab Runner](https://docs.gitlab.com/runner/) and it's extensive capabilities. The GitLab Runner is a superb piece of software that can run in a number of different ways, by re-using this, the project is 1000x easier to maintain.
@@ -36,16 +38,9 @@ A pipeline is an instance of a workflow, a workflow is made up of one or more jo
 
 Variables can be defined globally or at the pipeline level.
 
-## Outstanding Tasks
+**Important:** SCM integration has been **PURPOSEFULLY** left out at this point. It's possible this project will be expanded to handle SCMs.
 
-- [ ] High Availability for the API Server
-- [ ] UI Authentication
-- [ ] Runner Registration Auth
-- [ ] Support include (Gitlab CI, or YAML include of some sort)
-- [ ] Support trigger (GitLab CI)
-- [ ] Support rules (GitLab CI terminology for when jobs execute)
-- [ ] Support needs
-- [ ] Webhooks
+If you are looking for an open source CI/CD system, please check out [Alloy CI](https://github.com/AlloyCI/alloy_ci), Alloy CI is based on GitLab Runner as well, but is designed to integration with your SCM.
 
 ## Goals
 
@@ -65,6 +60,17 @@ Variables can be defined globally or at the pipeline level.
 
 - Integrated CI/CD with SCM (see [Alloy CI](https://github.com/AlloyCI/alloy_ci))
 - Multi-tenancy
+
+## Outstanding Tasks
+
+- [ ] High Availability for the API Server
+- [ ] UI Authentication
+- [ ] Runner Registration Auth
+- [ ] Support include (Gitlab CI, or YAML include of some sort)
+- [ ] Support trigger (GitLab CI)
+- [ ] Support rules (GitLab CI terminology for when jobs execute)
+- [ ] Support needs
+- [ ] Webhooks
 
 ## Features
 
@@ -171,4 +177,3 @@ npm run serve
 ```
 
 This will start a webpack development server on port at [http://0.0.0.0:4445](http://0.0.0.0:4445)
-
