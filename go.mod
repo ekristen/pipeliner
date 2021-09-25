@@ -32,7 +32,7 @@ require (
 	github.com/opencontainers/runc v0.1.1 // indirect
 	github.com/prometheus/client_golang v1.9.0 // indirect
 	github.com/rancher/wrangler v0.8.6
-	github.com/sirupsen/logrus v1.7.0
+	github.com/sirupsen/logrus v1.8.1
 	github.com/tevino/abool v1.2.0 // indirect
 	github.com/urfave/cli/v2 v2.3.0
 	gitlab.com/ayufan/golang-cli-helpers v0.0.0-20171103152739-a7cf72d604cd // indirect
