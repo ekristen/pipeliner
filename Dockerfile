@@ -1,4 +1,4 @@
-FROM node:12 as ui-builder
+FROM node:16 as ui-builder
 WORKDIR /src
 COPY ui/package.json /src/package.json
 COPY ui/package-lock.json /src/package-lock.json
