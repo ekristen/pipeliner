@@ -617,6 +617,8 @@ github.com/jstemmer/go-junit-report v0.9.1/go.mod h1:Brl9GWCQeLvo8nXZwPNNblvFj/X
 github.com/jtolds/gls v4.20.0+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfVYBRgL+9YlvaHOwJU=
 github.com/julienschmidt/httprouter v1.2.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
 github.com/julienschmidt/httprouter v1.3.0/go.mod h1:JR6WtHb+2LUe8TCKY3cZOxFyyO8IZAc4RVcycCCAKdM=
+github.com/karuppiah7890/nos-golang-sdk v0.0.0-20171031020902-cc8892cb2b05 h1:rM+HytTb6GCPS81yeBmNk8AfXRckTq6wt/kiFMgbHuk=
+github.com/karuppiah7890/nos-golang-sdk v0.0.0-20171031020902-cc8892cb2b05/go.mod h1:PVx/+EsUj40iwE90OM1U/tnbZh7UdQO6SmfCqBTCsDE=
 github.com/karuppiah7890/nos-golang-sdk v0.0.0-20191116042345-0792ba35abcc h1:dgrlRRZoV4Qnt75/OaWA3JT1xT+olHsc549BgzQjcLk=
 github.com/karuppiah7890/nos-golang-sdk v0.0.0-20191116042345-0792ba35abcc/go.mod h1:PVx/+EsUj40iwE90OM1U/tnbZh7UdQO6SmfCqBTCsDE=
 github.com/kisielk/errcheck v1.1.0/go.mod h1:EZBBE59ingxPouuu3KfxchcWSUPOHkagtvWXihfKN4Q=
