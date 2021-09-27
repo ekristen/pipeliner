@@ -64,4 +64,4 @@ replace go.etcd.io/etcd => github.com/eddycjy/etcd v0.5.0-alpha.5.0.202001290635
 replace google.golang.org/grpc => google.golang.org/grpc v1.29.1
 
 // Added because of https://github.com/go-gorm/gorm/issues/4719, can be removed after this is fixed
-replace gorm.io/gorm => gorm.io/gorm v1.21.14
+replace gorm.io/gorm => gorm.io/gorm v1.21.15
