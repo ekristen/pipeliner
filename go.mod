@@ -58,7 +58,7 @@ replace github.com/NetEase-Object-Storage/nos-golang-sdk => github.com/karuppiah
 
 // Added this for chartmuseum/storage
 //replace go.etcd.io/etcd => github.com/eddycjy/etcd v0.5.0-alpha.5.0.20200218102753-4258cdd2efdf
-replace go.etcd.io/etcd => github.com/eddycjy/etcd v0.5.0-alpha.5.0.20200129063535-5d07a202ae30
+replace go.etcd.io/etcd => github.com/eddycjy/etcd/v3 v3.4.3
 
 // Added because of https://github.com/etcd-io/etcd/issues/12124
 replace google.golang.org/grpc => google.golang.org/grpc v1.29.1
