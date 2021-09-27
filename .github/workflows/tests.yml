@@ -26,11 +26,9 @@ jobs:
       - name: Detect Version
         id: version
         run: echo ::set-output name=VERSION::$(.ci/version)
-      - name: Dependency Install
-        run: cd ui && npm install
       - name: Build
         id: build
-        run: make build
+        run: go build main.go
 
   ui:
     runs-on: ubuntu-latest
