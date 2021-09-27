@@ -30,6 +30,7 @@ jobs:
     env:
       SUMMARY: ${{ needs.version.outputs.version }}
       VERSION: ${{ needs.version.outputs.version }}
+      OSXCROSS_DIR: /home/runner/work/osxcross
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -52,6 +53,10 @@ jobs:
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
+      - name: OSXCross for CGO Support
+        run: |
+          mkdir ../../osxcross
+          git clone https://github.com/plentico/osxcross-target.git ../../osxcross/target
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
         with:

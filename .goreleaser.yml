@@ -7,6 +7,7 @@ env:
 before:
   hooks:
     - bash .ci/build-ui.sh
+    - go mod vendor
     - go mod tidy
     - go generate ./...
 release:
@@ -14,15 +15,28 @@ release:
     owner: ekristen
     name: pipeliner
 builds:
-  - env:
-      - CGO_ENABLED=0
+  - id: linux
+    env:
+      - CGO_ENABLED=1
     goos:
       - linux
-      - windows
+    goarch:
+      - amd64
+    ignore:
+      - goarch: 386
+    ldflags:
+      - -X {{.Env.PACKAGE_NAME}}/pkg/common.SUMMARY={{.Env.SUMMARY}} -X {{.Env.PACKAGE_NAME}}/pkg/common.BRANCH={{.Env.BRANCH}} -X {{.Env.PACKAGE_NAME}}/pkg/common.VERSION={{.Env.VERSION}}
+  - id: darwin
+    env:
+      - CGO_ENABLED=1
+      - CC=$OSXCROSS_DIR/target/bin/o64-clang
+      - CXX=$OSXCROSS_DIR/target/bin/o64-clang++
+    goos:
       - darwin
     ignore:
       - goarch: 386
     ldflags:
+      - -s
       - -X {{.Env.PACKAGE_NAME}}/pkg/common.SUMMARY={{.Env.SUMMARY}} -X {{.Env.PACKAGE_NAME}}/pkg/common.BRANCH={{.Env.BRANCH}} -X {{.Env.PACKAGE_NAME}}/pkg/common.VERSION={{.Env.VERSION}}
 archives:
   - replacements:
