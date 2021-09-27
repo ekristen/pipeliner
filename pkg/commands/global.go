@@ -14,6 +14,7 @@ func globalFlags() []cli.Flag {
 		&cli.StringFlag{
 			Name:    "log-level",
 			Usage:   "Log Level",
+			Aliases: []string{"l"},
 			EnvVars: []string{"LOGLEVEL", "LOG_LEVEL"},
 			Value:   "info",
 		},
@@ -68,6 +69,8 @@ func globalBefore(c *cli.Context) error {
 	logrus.SetFormatter(formatter)
 
 	switch c.String("log-level") {
+	case "trace":
+		logrus.SetLevel(logrus.TraceLevel)
 	case "debug":
 		logrus.SetLevel(logrus.DebugLevel)
 	case "info":

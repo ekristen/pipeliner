@@ -9,7 +9,6 @@ import (
 	"github.com/urfave/cli/v2"
 
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 
 	"github.com/rancher/wrangler/pkg/signals"
 
@@ -52,7 +51,7 @@ func (s *apiServerCommand) Execute(c *cli.Context) error {
 	}
 
 	db, err := database.New(dbDriver, dsn, &gorm.Config{
-		Logger: logger.Default.LogMode(logger.Silent),
+		Logger: database.NewLogger(c.String("log-level")),
 	})
 	if err != nil {
 		return err
