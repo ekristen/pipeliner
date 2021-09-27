@@ -2,7 +2,7 @@ version: "2"
 
 services:
   mysql:
-    image: mysql:5
+    image: mariadb:10.6.4
     environment:
       MYSQL_ROOT_PASSWORD: pipeliner
       MYSQL_DATABASE: pipeliner
