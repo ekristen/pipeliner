@@ -1,0 +1,45 @@
+name: tests
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  compiles:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.16
+      - name: Detect Version for Docker
+        id: docker-version
+        run: echo ::set-output name=VERSION::$(SEP="-" .ci/version)
+      - name: Detect Version
+        id: version
+        run: echo ::set-output name=VERSION::$(.ci/version)
+      - name: Build
+        id: build
+        run: make build
+
+  ui:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Build
+        id: build
+        run: make build-ui
