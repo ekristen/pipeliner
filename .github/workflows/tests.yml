@@ -26,6 +26,8 @@ jobs:
       - name: Detect Version
         id: version
         run: echo ::set-output name=VERSION::$(.ci/version)
+      - name: Dependency Install
+        run: cd ui && npm install
       - name: Build
         id: build
         run: make build
@@ -40,6 +42,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
+      - name: Dependency Install
+        run: cd ui && npm install
       - name: Build
         id: build
         run: make build-ui
