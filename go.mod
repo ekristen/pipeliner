@@ -57,4 +57,8 @@ replace github.com/minio/go-homedir v0.0.0-20190425115525-017018655514 => gitlab
 replace github.com/NetEase-Object-Storage/nos-golang-sdk => github.com/karuppiah7890/nos-golang-sdk v0.0.0-20191116042345-0792ba35abcc
 
 // Added this for chartmuseum/storage
-replace go.etcd.io/etcd => github.com/eddycjy/etcd v0.5.0-alpha.5.0.20200218102753-4258cdd2efdf
+//replace go.etcd.io/etcd => github.com/eddycjy/etcd v0.5.0-alpha.5.0.20200218102753-4258cdd2efdf
+replace go.etcd.io/etcd => github.com/eddycjy/etcd v0.5.0-alpha.5.0.20200129063535-5d07a202ae30
+
+// Added because of https://github.com/etcd-io/etcd/issues/12124
+replace google.golang.org/grpc => google.golang.org/grpc v1.29.1
