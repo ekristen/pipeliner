@@ -66,11 +66,10 @@ jobs:
         with:
           distribution: goreleaser
           version: latest
-          args: release --rm-dist $GORELEASE_ARGS
+          args: "release --rm-dist ${{ startsWith(github.ref, 'refs/tags/v') == true ? '--snapshot --skip-publish' : '' }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: ${{ steps.extract_branch.outputs.branch }}
-          GORELEASE_ARGS: "${{ startsWith(github.ref, 'refs/tags/v') }} == true ? '--snapshot --skip-publish' : ''"
       - name: Artifact Upload
         uses: actions/upload-artifact@v2
         if: startsWith(github.ref , 'refs/tags/v') == false
