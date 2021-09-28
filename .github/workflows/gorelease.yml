@@ -91,4 +91,7 @@ jobs:
         if: startsWith(github.ref , 'refs/tags/v') == false
         with:
           name: release
-          path: release/*
+          path: |
+            release/*.tar.gz
+            release/config.yaml
+            release/checksums.txt
