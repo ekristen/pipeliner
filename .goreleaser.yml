@@ -35,6 +35,7 @@ builds:
       - darwin
     ignore:
       - goarch: 386
+      - goarch: arm64
     ldflags:
       - -s
       - -X {{.Env.PACKAGE_NAME}}/pkg/common.SUMMARY={{.Env.SUMMARY}} -X {{.Env.PACKAGE_NAME}}/pkg/common.BRANCH={{.Env.BRANCH}} -X {{.Env.PACKAGE_NAME}}/pkg/common.VERSION={{.Env.VERSION}}
