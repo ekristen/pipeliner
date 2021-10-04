@@ -8,18 +8,18 @@
       disable-filtering
       hide-default-footer
     >
-      <template v-slot:item.status="{item}">
+      <template v-slot:item="{item}">
         <StateChip :state="state(item)" />
       </template>
-      <template v-slot:item.platform="{item}">{{ item.platform }} / {{ item.architecture }}</template>
-      <template v-slot:item.tags="{item}">
+      <template v-slot:item"{item}">{{ item.platform }} / {{ item.architecture }}</template>
+      <template v-slot:item="{item}">
         <v-chip-group>
           <Tags :tags="item.tags" color="tag" small />
           <v-chip color="secondary" small label v-if="item.run_untagged">Run Untagged</v-chip>
         </v-chip-group>
       </template>
-      <template v-slot:item.contacted_at="{item}">{{ formatDate(item.contacted_at) }}</template>
-      <template v-slot:item.actions="{item}">
+      <template v-slot:item="{item}">{{ formatDate(item.contacted_at) }}</template>
+      <template v-slot:item="{item}">
         <RunnerEdit :runner="item" />
         <v-btn fab x-small color="danger" class="ml-2">
           <v-icon>mdi-cross</v-icon>
