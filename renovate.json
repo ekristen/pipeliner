@@ -4,6 +4,8 @@
   ],
   "packageRules": [
     {
+      "groupName": "eslint",
+      "groupSlug": "eslint",
       "matchManagers": [
         "npm"
       ],
