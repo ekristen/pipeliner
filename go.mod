@@ -29,14 +29,13 @@ require (
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/opencontainers/image-spec v1.0.1 // indirect
-	github.com/opencontainers/runc v0.1.1 // indirect
 	github.com/prometheus/client_golang v1.9.0 // indirect
 	github.com/rancher/wrangler v0.8.6
 	github.com/sirupsen/logrus v1.8.1
 	github.com/tevino/abool v1.2.0 // indirect
 	github.com/urfave/cli/v2 v2.3.0
 	gitlab.com/ayufan/golang-cli-helpers v0.0.0-20171103152739-a7cf72d604cd // indirect
-	gitlab.com/gitlab-org/gitlab-runner v12.5.0+incompatible
+	gitlab.com/gitlab-org/gitlab-runner v12.10.3+incompatible
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/yaml.v1 v1.0.0-20140924161607-9f9df34309c0
