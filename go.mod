@@ -36,7 +36,7 @@ require (
 	github.com/tevino/abool v1.2.0 // indirect
 	github.com/urfave/cli/v2 v2.3.0
 	gitlab.com/ayufan/golang-cli-helpers v0.0.0-20171103152739-a7cf72d604cd // indirect
-	gitlab.com/gitlab-org/gitlab-runner v12.5.0+incompatible
+	gitlab.com/gitlab-org/gitlab-runner/v14 v14.4.0
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/yaml.v1 v1.0.0-20140924161607-9f9df34309c0
