@@ -8,3 +8,4 @@ pipeliner
 .envrc
 dist/
 archive
+/*.yaml
