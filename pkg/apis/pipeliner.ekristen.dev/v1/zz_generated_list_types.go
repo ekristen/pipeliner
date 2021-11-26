@@ -54,6 +54,23 @@ func NewGitRepository(namespace, name string, obj GitRepository) *GitRepository 
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// PipelineList is a list of Pipeline resources
+type PipelineList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata"`
+
+	Items []Pipeline `json:"items"`
+}
+
+func NewPipeline(namespace, name string, obj Pipeline) *Pipeline {
+	obj.APIVersion, obj.Kind = SchemeGroupVersion.WithKind("Pipeline").ToAPIVersionAndKind()
+	obj.Name = name
+	obj.Namespace = namespace
+	return &obj
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
 // WorkflowList is a list of Workflow resources
 type WorkflowList struct {
 	metav1.TypeMeta `json:",inline"`

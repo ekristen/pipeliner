@@ -25,6 +25,7 @@ func init() {
 
 type Interface interface {
 	GitRepository() GitRepositoryController
+	Pipeline() PipelineController
 	Setting() SettingController
 	Workflow() WorkflowController
 }
@@ -41,6 +42,9 @@ type version struct {
 
 func (c *version) GitRepository() GitRepositoryController {
 	return NewGitRepositoryController(schema.GroupVersionKind{Group: "pipeliner.ekristen.dev", Version: "v1", Kind: "GitRepository"}, "gitrepositories", true, c.controllerFactory)
+}
+func (c *version) Pipeline() PipelineController {
+	return NewPipelineController(schema.GroupVersionKind{Group: "pipeliner.ekristen.dev", Version: "v1", Kind: "Pipeline"}, "pipelines", true, c.controllerFactory)
 }
 func (c *version) Setting() SettingController {
 	return NewSettingController(schema.GroupVersionKind{Group: "pipeliner.ekristen.dev", Version: "v1", Kind: "Setting"}, "settings", false, c.controllerFactory)
