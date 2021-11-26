@@ -17,7 +17,7 @@ type Pipeline struct {
 }
 
 type PipelineSpec struct {
-	SecretRef ObjectReference `json:"secretRef"`
+	SourceRef ObjectReference `json:"sourceRef"`
 }
 
 type PipelineStatus struct {
