@@ -85,3 +85,20 @@ func NewWorkflow(namespace, name string, obj Workflow) *Workflow {
 	obj.Namespace = namespace
 	return &obj
 }
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// JobList is a list of Job resources
+type JobList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata"`
+
+	Items []Job `json:"items"`
+}
+
+func NewJob(namespace, name string, obj Job) *Job {
+	obj.APIVersion, obj.Kind = SchemeGroupVersion.WithKind("Job").ToAPIVersionAndKind()
+	obj.Name = name
+	obj.Namespace = namespace
+	return &obj
+}

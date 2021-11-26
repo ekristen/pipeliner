@@ -23,6 +23,7 @@ import (
 
 var (
 	GitRepositoryResourceName = "gitrepositories"
+	JobResourceName           = "jobs"
 	PipelineResourceName      = "pipelines"
 	SettingResourceName       = "settings"
 	WorkflowResourceName      = "workflows"
@@ -51,6 +52,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&GitRepository{},
 		&GitRepositoryList{},
+		&Job{},
+		&JobList{},
 		&Pipeline{},
 		&PipelineList{},
 		&Setting{},

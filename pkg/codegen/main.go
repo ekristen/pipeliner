@@ -18,6 +18,7 @@ func main() {
 					v1.GitRepository{},
 					v1.Pipeline{},
 					v1.Workflow{},
+					v1.Job{},
 				},
 				GenerateTypes:   true,
 				GenerateClients: true,

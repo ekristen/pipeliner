@@ -21,6 +21,7 @@ import (
 type PipelinerV1Interface interface {
 	RESTClient() rest.Interface
 	GitRepositoriesGetter
+	JobsGetter
 	PipelinesGetter
 	SettingsGetter
 	WorkflowsGetter
@@ -33,6 +34,10 @@ type PipelinerV1Client struct {
 
 func (c *PipelinerV1Client) GitRepositories(namespace string) GitRepositoryInterface {
 	return newGitRepositories(c, namespace)
+}
+
+func (c *PipelinerV1Client) Jobs(namespace string) JobInterface {
+	return newJobs(c, namespace)
 }
 
 func (c *PipelinerV1Client) Pipelines(namespace string) PipelineInterface {

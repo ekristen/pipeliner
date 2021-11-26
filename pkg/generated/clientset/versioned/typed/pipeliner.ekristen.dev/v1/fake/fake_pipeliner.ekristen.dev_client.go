@@ -26,6 +26,10 @@ func (c *FakePipelinerV1) GitRepositories(namespace string) v1.GitRepositoryInte
 	return &FakeGitRepositories{c, namespace}
 }
 
+func (c *FakePipelinerV1) Jobs(namespace string) v1.JobInterface {
+	return &FakeJobs{c, namespace}
+}
+
 func (c *FakePipelinerV1) Pipelines(namespace string) v1.PipelineInterface {
 	return &FakePipelines{c, namespace}
 }
