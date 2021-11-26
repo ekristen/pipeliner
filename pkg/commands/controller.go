@@ -4,15 +4,20 @@ import (
 	"context"
 
 	"github.com/ekristen/pipeliner/pkg/common"
-	"github.com/rancher/wrangler/pkg/apply"
+	"github.com/ekristen/pipeliner/pkg/controllers/settings"
+	"github.com/ekristen/pipeliner/pkg/crds"
+	"github.com/ekristen/pipeliner/pkg/generated/controllers/pipeliner.ekristen.dev"
+
 	"github.com/rancher/wrangler/pkg/generated/controllers/core"
 	"github.com/rancher/wrangler/pkg/kubeconfig"
 	"github.com/rancher/wrangler/pkg/leader"
 	"github.com/rancher/wrangler/pkg/signals"
 	"github.com/rancher/wrangler/pkg/start"
-	"github.com/sirupsen/logrus"
+
 	"github.com/urfave/cli/v2"
+
 	"k8s.io/apimachinery/pkg/util/runtime"
+	"k8s.io/client-go/kubernetes"
 )
 
 type controllerCommand struct{}
@@ -21,7 +26,7 @@ func (s *controllerCommand) Execute(c *cli.Context) error {
 	// set up signals so we handle the first shutdown signal gracefully
 	ctx := signals.SetupSignalHandler(context.Background())
 
-	log := logrus.WithField("command", "controller")
+	//log := logrus.WithField("command", "controller")
 
 	//go metrics.NewMetricsServer(ctx, c.String("metrics-port"), true, metrics.OdinRegistry)
 
@@ -30,10 +35,17 @@ func (s *controllerCommand) Execute(c *cli.Context) error {
 		return err
 	}
 
-	apply, err := apply.NewForConfig(cfg)
+	kube, err := kubernetes.NewForConfig(cfg)
 	if err != nil {
 		return err
 	}
+
+	/*
+		apply, err := apply.NewForConfig(cfg)
+		if err != nil {
+			return err
+		}
+	*/
 
 	pipeliner, err := pipeliner.NewFactoryFromConfig(cfg)
 	if err != nil {
@@ -50,7 +62,7 @@ func (s *controllerCommand) Execute(c *cli.Context) error {
 	}
 
 	// Register all our controllers
-	if err := settings.Register(odin.Odin().V1().Setting()); err != nil {
+	if err := settings.Register(pipeliner.Pipeliner().V1().Setting()); err != nil {
 		return err
 	}
 
@@ -67,10 +79,18 @@ func (s *controllerCommand) Execute(c *cli.Context) error {
 func init() {
 	cmd := controllerCommand{}
 
+	flags := []cli.Flag{
+		&cli.StringFlag{
+			Name:  "lockname",
+			Value: "pipeliner-controller",
+		},
+	}
+
 	cliCmd := &cli.Command{
 		Name:   "controller",
 		Usage:  "controller for pipeliner k8s crds",
 		Action: cmd.Execute,
+		Flags:  append(flags, globalFlags()...),
 		Before: globalBefore,
 	}
 
