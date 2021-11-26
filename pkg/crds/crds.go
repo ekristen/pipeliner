@@ -23,6 +23,21 @@ func List() []crd.CRD {
 				WithCategories("pipeliner").
 				WithColumnsFromStruct(obj)
 		}),
+		newCRD(v1.Workflow{}, func(obj interface{}, c crd.CRD) crd.CRD {
+			return c.WithStatus().
+				WithCategories("pipeliner").
+				WithColumnsFromStruct(obj)
+		}),
+		newCRD(v1.Pipeline{}, func(obj interface{}, c crd.CRD) crd.CRD {
+			return c.WithStatus().
+				WithCategories("pipeliner").
+				WithColumnsFromStruct(obj)
+		}),
+		newCRD(v1.Job{}, func(obj interface{}, c crd.CRD) crd.CRD {
+			return c.WithStatus().
+				WithCategories("pipeliner").
+				WithColumnsFromStruct(obj)
+		}),
 	}
 }
 

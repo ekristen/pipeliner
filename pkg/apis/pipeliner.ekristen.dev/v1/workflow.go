@@ -17,7 +17,7 @@ type Workflow struct {
 }
 
 type WorkflowSpec struct {
-	SecretRef ObjectReference `json:"secretRef"`
+	Raw string `json:"raw"`
 }
 
 type WorkflowStatus struct {

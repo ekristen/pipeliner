@@ -4,10 +4,15 @@ import (
 	"context"
 
 	"github.com/ekristen/pipeliner/pkg/common"
+	"github.com/ekristen/pipeliner/pkg/controllers/gitrepository"
+	"github.com/ekristen/pipeliner/pkg/controllers/job"
+	"github.com/ekristen/pipeliner/pkg/controllers/pipeline"
 	"github.com/ekristen/pipeliner/pkg/controllers/settings"
+	"github.com/ekristen/pipeliner/pkg/controllers/workflow"
 	"github.com/ekristen/pipeliner/pkg/crds"
 	"github.com/ekristen/pipeliner/pkg/generated/controllers/pipeliner.ekristen.dev"
 
+	"github.com/rancher/wrangler/pkg/apply"
 	"github.com/rancher/wrangler/pkg/generated/controllers/core"
 	"github.com/rancher/wrangler/pkg/kubeconfig"
 	"github.com/rancher/wrangler/pkg/leader"
@@ -40,19 +45,13 @@ func (s *controllerCommand) Execute(c *cli.Context) error {
 		return err
 	}
 
-	/*
-		apply, err := apply.NewForConfig(cfg)
-		if err != nil {
-			return err
-		}
-	*/
-
-	pipeliner, err := pipeliner.NewFactoryFromConfig(cfg)
+	apply, err := apply.NewForConfig(cfg)
 	if err != nil {
 		return err
 	}
 
-	if err := crds.Create(ctx, cfg); err != nil {
+	pipeliner, err := pipeliner.NewFactoryFromConfig(cfg)
+	if err != nil {
 		return err
 	}
 
@@ -66,9 +65,27 @@ func (s *controllerCommand) Execute(c *cli.Context) error {
 		return err
 	}
 
+	if err := gitrepository.Register(ctx, apply, pipeliner.Pipeliner().V1().GitRepository()); err != nil {
+		return nil
+	}
+
+	if err := workflow.Register(ctx, apply, pipeliner.Pipeliner().V1().Workflow()); err != nil {
+		return err
+	}
+
+	if err := pipeline.Register(ctx, apply, pipeliner.Pipeliner().V1().Pipeline()); err != nil {
+		return err
+	}
+
+	if err := job.Register(ctx, apply, pipeliner.Pipeliner().V1().Job()); err != nil {
+		return err
+	}
+
 	// Become leader, then create CRDS (or update), followed by starting all controllers
 	leader.RunOrDie(ctx, c.String("namespace"), c.String("lockname"), kube, func(ctx context.Context) {
-		runtime.Must(start.All(ctx, 5, core, pipeliner))
+		runtime.Must(crds.Create(ctx, cfg))
+
+		runtime.Must(start.All(ctx, 50, core, pipeliner))
 
 		<-ctx.Done()
 	})
