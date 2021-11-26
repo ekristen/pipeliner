@@ -24,6 +24,7 @@ import (
 var (
 	GitRepositoryResourceName = "gitrepositories"
 	SettingResourceName       = "settings"
+	WorkflowResourceName      = "workflows"
 )
 
 // SchemeGroupVersion is group version used to register these objects
@@ -51,6 +52,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&GitRepositoryList{},
 		&Setting{},
 		&SettingList{},
+		&Workflow{},
+		&WorkflowList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

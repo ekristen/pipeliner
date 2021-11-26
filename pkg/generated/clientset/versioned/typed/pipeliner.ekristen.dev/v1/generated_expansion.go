@@ -14,4 +14,8 @@ package v1
 
 type GitRepositoryExpansion interface{}
 
+type PipelineExpansion interface{}
+
 type SettingExpansion interface{}
+
+type WorkflowExpansion interface{}

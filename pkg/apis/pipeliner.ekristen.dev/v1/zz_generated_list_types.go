@@ -51,3 +51,20 @@ func NewGitRepository(namespace, name string, obj GitRepository) *GitRepository 
 	obj.Namespace = namespace
 	return &obj
 }
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// WorkflowList is a list of Workflow resources
+type WorkflowList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata"`
+
+	Items []Workflow `json:"items"`
+}
+
+func NewWorkflow(namespace, name string, obj Workflow) *Workflow {
+	obj.APIVersion, obj.Kind = SchemeGroupVersion.WithKind("Workflow").ToAPIVersionAndKind()
+	obj.Name = name
+	obj.Namespace = namespace
+	return &obj
+}

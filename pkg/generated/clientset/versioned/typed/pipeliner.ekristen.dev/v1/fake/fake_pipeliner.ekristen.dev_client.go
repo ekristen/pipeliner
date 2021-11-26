@@ -26,8 +26,16 @@ func (c *FakePipelinerV1) GitRepositories(namespace string) v1.GitRepositoryInte
 	return &FakeGitRepositories{c, namespace}
 }
 
+func (c *FakePipelinerV1) Pipelines(namespace string) v1.PipelineInterface {
+	return &FakePipelines{c, namespace}
+}
+
 func (c *FakePipelinerV1) Settings() v1.SettingInterface {
 	return &FakeSettings{c}
+}
+
+func (c *FakePipelinerV1) Workflows(namespace string) v1.WorkflowInterface {
+	return &FakeWorkflows{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

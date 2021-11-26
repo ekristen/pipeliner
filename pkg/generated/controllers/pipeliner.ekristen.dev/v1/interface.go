@@ -26,6 +26,7 @@ func init() {
 type Interface interface {
 	GitRepository() GitRepositoryController
 	Setting() SettingController
+	Workflow() WorkflowController
 }
 
 func New(controllerFactory controller.SharedControllerFactory) Interface {
@@ -43,4 +44,7 @@ func (c *version) GitRepository() GitRepositoryController {
 }
 func (c *version) Setting() SettingController {
 	return NewSettingController(schema.GroupVersionKind{Group: "pipeliner.ekristen.dev", Version: "v1", Kind: "Setting"}, "settings", false, c.controllerFactory)
+}
+func (c *version) Workflow() WorkflowController {
+	return NewWorkflowController(schema.GroupVersionKind{Group: "pipeliner.ekristen.dev", Version: "v1", Kind: "Workflow"}, "workflows", true, c.controllerFactory)
 }

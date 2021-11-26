@@ -21,7 +21,9 @@ import (
 type PipelinerV1Interface interface {
 	RESTClient() rest.Interface
 	GitRepositoriesGetter
+	PipelinesGetter
 	SettingsGetter
+	WorkflowsGetter
 }
 
 // PipelinerV1Client is used to interact with features provided by the pipeliner.ekristen.dev group.
@@ -33,8 +35,16 @@ func (c *PipelinerV1Client) GitRepositories(namespace string) GitRepositoryInter
 	return newGitRepositories(c, namespace)
 }
 
+func (c *PipelinerV1Client) Pipelines(namespace string) PipelineInterface {
+	return newPipelines(c, namespace)
+}
+
 func (c *PipelinerV1Client) Settings() SettingInterface {
 	return newSettings(c)
+}
+
+func (c *PipelinerV1Client) Workflows(namespace string) WorkflowInterface {
+	return newWorkflows(c, namespace)
 }
 
 // NewForConfig creates a new PipelinerV1Client for the given config.

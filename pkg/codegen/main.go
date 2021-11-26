@@ -16,6 +16,7 @@ func main() {
 				Types: []interface{}{
 					v1.Setting{},
 					v1.GitRepository{},
+					v1.Workflow{},
 				},
 				GenerateTypes:   true,
 				GenerateClients: true,
