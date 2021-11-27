@@ -22,6 +22,10 @@ type FakePipelinerV1 struct {
 	*testing.Fake
 }
 
+func (c *FakePipelinerV1) Artifacts(namespace string) v1.ArtifactInterface {
+	return &FakeArtifacts{c, namespace}
+}
+
 func (c *FakePipelinerV1) GitRepositories(namespace string) v1.GitRepositoryInterface {
 	return &FakeGitRepositories{c, namespace}
 }

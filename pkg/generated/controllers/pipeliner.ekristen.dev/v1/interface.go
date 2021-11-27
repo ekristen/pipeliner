@@ -24,6 +24,7 @@ func init() {
 }
 
 type Interface interface {
+	Artifact() ArtifactController
 	GitRepository() GitRepositoryController
 	Job() JobController
 	Pipeline() PipelineController
@@ -41,6 +42,9 @@ type version struct {
 	controllerFactory controller.SharedControllerFactory
 }
 
+func (c *version) Artifact() ArtifactController {
+	return NewArtifactController(schema.GroupVersionKind{Group: "pipeliner.ekristen.dev", Version: "v1", Kind: "Artifact"}, "artifacts", true, c.controllerFactory)
+}
 func (c *version) GitRepository() GitRepositoryController {
 	return NewGitRepositoryController(schema.GroupVersionKind{Group: "pipeliner.ekristen.dev", Version: "v1", Kind: "GitRepository"}, "gitrepositories", true, c.controllerFactory)
 }

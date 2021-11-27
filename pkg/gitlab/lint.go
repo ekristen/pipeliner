@@ -74,6 +74,9 @@ func (c *YAMLLinter) ValidateJobsStages() error {
 	for k := range c.getJobConfigs() {
 		opts, _ := c.config.GetSubOptions(k)
 		stage, _ := opts.GetString("stage")
+		if stage == "" {
+			stage = "build"
+		}
 
 		if !utils.StringSliceContains(stages, stage) {
 			return fmt.Errorf("%s job: chosen stage (%s) does not exist; available stages are %s", k, stage, strings.Join(stages, ","))

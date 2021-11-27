@@ -17,7 +17,8 @@ type Job struct {
 }
 
 type JobSpec struct {
-	SecretRef ObjectReference `json:"secretRef"`
+	SecretRef ObjectReference   `json:"secretRef"`
+	DependsOn []ObjectReference `json:"dependsOn,omitempty`
 }
 
 type JobStatus struct {

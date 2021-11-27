@@ -12,6 +12,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 package v1
 
+type ArtifactExpansion interface{}
+
 type GitRepositoryExpansion interface{}
 
 type JobExpansion interface{}

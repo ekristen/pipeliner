@@ -1,0 +1,12 @@
+default:
+  image: ruby:3.0
+
+image: ubuntu:20.04
+
+rspec:
+  script: bundle exec rspec
+  retry: 2
+
+rspec 2.7:
+  image: ruby:2.7
+  script: bundle exec rspec

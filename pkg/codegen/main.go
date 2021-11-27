@@ -19,6 +19,7 @@ func main() {
 					v1.Pipeline{},
 					v1.Workflow{},
 					v1.Job{},
+					v1.Artifact{},
 				},
 				GenerateTypes:   true,
 				GenerateClients: true,

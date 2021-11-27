@@ -1,6 +1,7 @@
 package v1
 
 import (
+	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 	"github.com/rancher/wrangler/pkg/genericcondition"
@@ -17,7 +18,9 @@ type Workflow struct {
 }
 
 type WorkflowSpec struct {
-	Raw string `json:"raw"`
+	Raw     string                 `json:"raw"`
+	Env     []corev1.EnvVar        `json:"env,omitempty"`
+	EnvFrom []corev1.EnvFromSource `json:"envFrom,omitempty"`
 }
 
 type WorkflowStatus struct {

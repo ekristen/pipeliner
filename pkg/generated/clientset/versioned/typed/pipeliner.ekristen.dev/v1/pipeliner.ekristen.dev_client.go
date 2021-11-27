@@ -20,6 +20,7 @@ import (
 
 type PipelinerV1Interface interface {
 	RESTClient() rest.Interface
+	ArtifactsGetter
 	GitRepositoriesGetter
 	JobsGetter
 	PipelinesGetter
@@ -30,6 +31,10 @@ type PipelinerV1Interface interface {
 // PipelinerV1Client is used to interact with features provided by the pipeliner.ekristen.dev group.
 type PipelinerV1Client struct {
 	restClient rest.Interface
+}
+
+func (c *PipelinerV1Client) Artifacts(namespace string) ArtifactInterface {
+	return newArtifacts(c, namespace)
 }
 
 func (c *PipelinerV1Client) GitRepositories(namespace string) GitRepositoryInterface {

@@ -1,0 +1,14 @@
+apiVersion: pipeliner.ekristen.dev/v1
+kind: Workflow
+metadata:
+  name: example-debug-ci
+spec:
+  raw: |
+    image: alpine
+
+    debug_trace:
+      variables:
+        CI_DEBUG_TRACE: "true"
+      script:
+        - echo 'Testing debug trace'
+        - echo 'Another debug trace'

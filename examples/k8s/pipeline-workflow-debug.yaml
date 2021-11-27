@@ -1,0 +1,8 @@
+apiVersion: pipeliner.ekristen.dev/v1
+kind: Pipeline
+metadata:
+  generateName: pipeline-debug-
+spec:
+  sourceRef:
+    name: example-debug-ci
+    kind: Workflow

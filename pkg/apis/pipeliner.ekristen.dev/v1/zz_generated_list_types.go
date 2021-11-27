@@ -102,3 +102,20 @@ func NewJob(namespace, name string, obj Job) *Job {
 	obj.Namespace = namespace
 	return &obj
 }
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// ArtifactList is a list of Artifact resources
+type ArtifactList struct {
+	metav1.TypeMeta `json:",inline"`
+	metav1.ListMeta `json:"metadata"`
+
+	Items []Artifact `json:"items"`
+}
+
+func NewArtifact(namespace, name string, obj Artifact) *Artifact {
+	obj.APIVersion, obj.Kind = SchemeGroupVersion.WithKind("Artifact").ToAPIVersionAndKind()
+	obj.Name = name
+	obj.Namespace = namespace
+	return &obj
+}

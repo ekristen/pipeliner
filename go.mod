@@ -38,6 +38,7 @@ require (
 	github.com/rancher/wrangler v0.8.9
 	github.com/sirupsen/logrus v1.8.1
 	github.com/soheilhy/cmux v0.1.5 // indirect
+	github.com/stevenle/topsort v0.2.0 // indirect
 	github.com/tevino/abool v1.2.0 // indirect
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20201229170055-e5319fda7802 // indirect
 	github.com/urfave/cli v1.22.2 // indirect
@@ -55,6 +56,7 @@ require (
 	gorm.io/driver/sqlite v1.2.6
 	gorm.io/gorm v1.22.3
 	gotest.tools/v3 v3.0.3 // indirect
+	k8s.io/api v0.22.4
 	k8s.io/apiextensions-apiserver v0.19.0-alpha.3 // indirect
 	k8s.io/apimachinery v0.22.4
 	k8s.io/client-go v0.22.4
