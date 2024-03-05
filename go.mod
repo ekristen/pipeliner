@@ -19,7 +19,7 @@ require (
 	github.com/go-http-utils/etag v0.0.0-20161124023236-513ea8f21eb1
 	github.com/go-http-utils/fresh v0.0.0-20161124030543-7231e26a4b27 // indirect
 	github.com/go-http-utils/headers v0.0.0-20181008091004-fed159eddc2a // indirect
-	github.com/google/uuid v1.3.0
+	github.com/google/uuid v1.6.0
 	github.com/gorhill/cronexpr v0.0.0-20180427100037-88b0669f7d75
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/sessions v1.2.1
@@ -37,11 +37,8 @@ require (
 	github.com/urfave/cli/v2 v2.3.0
 	gitlab.com/ayufan/golang-cli-helpers v0.0.0-20171103152739-a7cf72d604cd // indirect
 	gitlab.com/gitlab-org/gitlab-runner v12.5.0+incompatible
-	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
-	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
 	gopkg.in/yaml.v1 v1.0.0-20140924161607-9f9df34309c0
 	gopkg.in/yaml.v2 v2.4.0
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	gorm.io/datatypes v1.0.3
 	gorm.io/driver/mysql v1.1.3
 	gorm.io/driver/sqlite v1.2.3
@@ -61,7 +58,7 @@ replace github.com/NetEase-Object-Storage/nos-golang-sdk => github.com/karuppiah
 replace go.etcd.io/etcd => github.com/eddycjy/etcd v0.5.0-alpha.5.0.20200129063535-5d07a202ae30
 
 // Added because of https://github.com/etcd-io/etcd/issues/12124
-replace google.golang.org/grpc => google.golang.org/grpc v1.29.1
+replace google.golang.org/grpc => google.golang.org/grpc v1.62.1
 
 // Added because of https://github.com/go-gorm/gorm/issues/4719, can be removed after this is fixed
 replace gorm.io/gorm => gorm.io/gorm v1.21.14
