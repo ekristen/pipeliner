@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "0.22.0",
-    "codemirror": "5.63.1",
+    "codemirror": "5.65.18",
     "core-js": "3.18.2",
     "highlightjs-line-numbers.js": "2.8.0",
     "json-bigint": "1.0.0",
