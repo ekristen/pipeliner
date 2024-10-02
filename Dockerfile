@@ -6,13 +6,13 @@ RUN npm install
 COPY ui/ /src
 RUN npm run build
 
-FROM golang:1.16.4 as ui-generator
+FROM golang:1.23.2 as ui-generator
 WORKDIR /src
 COPY . /src
 COPY --from=ui-builder /src/dist /src/ui/dist
 RUN make generate
 
-FROM golang:1.16.4 as builder
+FROM golang:1.23.2 as builder
 WORKDIR /src
 COPY . /src
 COPY --from=ui-generator /src/pkg/box/blob.go /src/pkg/box/blob.go
