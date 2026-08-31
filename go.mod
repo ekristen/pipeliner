@@ -23,7 +23,7 @@ require (
 	github.com/gorhill/cronexpr v0.0.0-20180427100037-88b0669f7d75
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/sessions v1.2.1
-	github.com/gorilla/websocket v1.4.2
+	github.com/gorilla/websocket v1.5.3
 	github.com/jinzhu/copier v0.3.2
 	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/go-sqlite3 v2.0.3+incompatible // indirect
