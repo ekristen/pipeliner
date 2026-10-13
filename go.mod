@@ -30,7 +30,7 @@ require (
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/opencontainers/image-spec v1.0.1 // indirect
 	github.com/opencontainers/runc v0.1.1 // indirect
-	github.com/prometheus/client_golang v1.9.0 // indirect
+	github.com/prometheus/client_golang v1.11.1 // indirect
 	github.com/rancher/wrangler v0.8.6
 	github.com/sirupsen/logrus v1.8.1
 	github.com/tevino/abool v1.2.0 // indirect
